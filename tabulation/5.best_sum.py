@@ -35,20 +35,22 @@ def best_sum(targetSum, numbers):
 		for num in numbers:
 
 			# only update list items which are reachable
-			if i + num < len(lst):
-				# current sum to number `i + num`
-				cur_sum = lst[i + num]
+			if i + num >= len(lst):
+				continue
 
-				# new contender sum to number `i + num`
-				new_sum = [num, *lst[i]]
+			# current sum to number `i + num`
+			cur_sum = lst[i + num]
 
-				# if there was previously no way of summing to `i + num`, now there is
-				if cur_sum is None:
-					lst[i + num] = new_sum
+			# new contender sum to number `i + num`
+			new_sum = [num, *lst[i]]
 
-				# if the new contender sum to `i + num` is shorter than the current one, update it
-				elif len(cur_sum) > len(new_sum):
-					lst[i + num] = new_sum
+			# if there was previously no way of summing to `i + num`, now there is
+			if cur_sum is None:
+				lst[i + num] = new_sum
+
+			# if the new contender sum to `i + num` is shorter than the current one, update it
+			elif len(cur_sum) > len(new_sum):
+				lst[i + num] = new_sum
 
 	return lst[targetSum]
 

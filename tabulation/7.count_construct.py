@@ -23,13 +23,17 @@ def count_construct(target, word_bank):
 		sub_target = target[i:]
 
 		for word in word_bank:
-			if sub_target.startswith(word):
-				idx = i + len(word)
 
-				if lst[idx] is None:
-					lst[idx] = 1
-				else:
-					lst[idx] += 1
+			# only update list items which match the rest of the string
+			if not sub_target.startswith(word):
+				continue
+
+			idx = i + len(word)
+
+			if lst[idx] is None:
+				lst[idx] = 1
+			else:
+				lst[idx] += 1
 
 		print(i, lst)
 

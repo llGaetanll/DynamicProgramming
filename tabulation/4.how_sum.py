@@ -36,14 +36,15 @@ def how_sum(targetSum, numbers):
 		for num in numbers:
 
 			# only update list items which are reachable
-			if i + num < len(lst):
+			if i + num >= len(lst):
+				continue
 
-				# "append" num to lst[i + num]'s list
-				# note that this may not be the best (shortest) sum
-				if lst[i + num] is None:
-					lst[i + num] = [num]
-				else:
-					lst[i + num] = [num, *lst[i]] 
+			# "append" num to lst[i + num]'s list
+			# note that this may not be the best (shortest) sum
+			if lst[i + num] is None:
+				lst[i + num] = [num]
+			else:
+				lst[i + num] = [num, *lst[i]] 
 
 	return lst[targetSum]
 
