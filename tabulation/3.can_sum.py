@@ -16,30 +16,30 @@
 # Time: O(mn)
 # Space: O(m)
 def can_sum(targetSum, numbers):
-	# each index `i` of the list represents whether number `i` can be
-	# generated using any number in `numbers`. We start off by assuming that no
-	# quantity is reachable
-	lst = [False] * (targetSum + 1)
+  # each index `i` of the list represents whether number `i` can be
+  # generated using any number in `numbers`. We start off by assuming that no
+  # quantity is reachable
+  lst = [False] * (targetSum + 1)
 
-	# it's always possible to generate 0, just do nothing
-	lst[0] = True
+  # it's always possible to generate 0, just do nothing
+  lst[0] = True
 
-	# iterate through the list
-	for i in range(len(lst)):
+  # iterate through the list
+  for i in range(len(lst)):
 
-		# if the current sum is unacheivable, don't build upon it
-		if not lst[i]:
-			continue
+    # if the current sum is unacheivable, don't build upon it
+    if not lst[i]:
+      continue
 
-		# if the current index `i` can be reached, then any `i + k` can be reached
-		# where `k` is any element of `numbers`
-		for num in numbers:
+    # if the current index `i` can be reached, then any `i + k` can be reached
+    # where `k` is any element of `numbers`
+    for num in numbers:
 
-			# only update list items which are reachable
-			if i + num < len(lst):
-				lst[i + num] = True
+      # only update list items which are reachable
+      if i + num < len(lst):
+        lst[i + num] = True
 
-	return lst[targetSum]
+  return lst[targetSum]
 
 
 

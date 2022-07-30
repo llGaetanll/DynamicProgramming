@@ -18,21 +18,21 @@
 #  	The height of the recursion tree. Here we don't count the length of the
 #  	output, otherwise it would also be exponential in space.
 def all_construct(target, word_bank):
-	if target == "": return [[]]
+  if target == "": return [[]]
 
-	ways = []
-	for word in word_bank:
-		if target.startswith(word):
-			suffix = target[len(word):]
+  ways = []
+  for word in word_bank:
+    if target.startswith(word):
+      suffix = target[len(word):]
 
-			results = all_construct(suffix, word_bank)
+      results = all_construct(suffix, word_bank)
 
-			for res in results:
-				res.insert(0, word)
+      for res in results:
+        res.insert(0, word)
 
-			ways.extend(results)
+      ways.extend(results)
 
-	return ways
+  return ways
 
 
 # Note that this memoized function is no better than the first approach.
@@ -42,26 +42,26 @@ def all_construct(target, word_bank):
 # Time: O(n^m)
 # Space: O(m)
 def all_construct_memo(target, word_bank, memo = {}):
-	if target == "": return [[]]
+  if target == "": return [[]]
 
-	if target in memo:
-		return memo[target]
+  if target in memo:
+    return memo[target]
 
-	ways = []
-	for word in word_bank:
-		if target.startswith(word):
-			suffix = target[len(word):]
+  ways = []
+  for word in word_bank:
+    if target.startswith(word):
+      suffix = target[len(word):]
 
-			results = all_construct_memo(suffix, word_bank, memo)
+      results = all_construct_memo(suffix, word_bank, memo)
 
-			for res in results:
-				res.insert(0, word)
+      for res in results:
+        res.insert(0, word)
 
-			ways.extend(results)
+      ways.extend(results)
 
-	target[memo] = ways
+  target[memo] = ways
 
-	return ways
+  return ways
 
 
 print(all_construct("purple", ['purp', 'p', 'ur', 'le', 'purpl']))

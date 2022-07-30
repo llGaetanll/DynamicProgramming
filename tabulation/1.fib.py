@@ -13,23 +13,23 @@
 # Time: O(n)
 # Space: O(n)
 def fib(n):
-	# fill a list of size n + 1 with zeroes
-	lst = [0] * (n + 1)
+  # fill a list of size n + 1 with zeroes
+  lst = [0] * (n + 1)
 
-	# fib(1) = 1
-	lst[1] = 1
+  # fib(1) = 1
+  lst[1] = 1
 
-	# each index adds its value to its neighbor and next-neighbor
-	for i, el in enumerate(lst):
-		# add to neighbor
-		if i + 1 < len(lst):
-			lst[i + 1] += el
+  # each index adds its value to its neighbor and next-neighbor
+  for i, el in enumerate(lst):
+    # add to neighbor
+    if i + 1 < len(lst):
+      lst[i + 1] += el
 
-		# add to next-neighbor
-		if i + 2 < len(lst):
-			lst[i + 2] += el
+    # add to next-neighbor
+    if i + 2 < len(lst):
+      lst[i + 2] += el
 
-	return lst[n]
+  return lst[n]
 
 
 

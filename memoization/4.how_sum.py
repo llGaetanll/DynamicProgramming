@@ -18,17 +18,17 @@
 #
 # Space: O(m)
 def how_sum(targetSum, numbers):
-	if targetSum == 0: return []
-	if targetSum < 0: return None
+  if targetSum == 0: return []
+  if targetSum < 0: return None
 
-	for number in numbers:
-		val = targetSum - number
+  for number in numbers:
+    val = targetSum - number
 
-		res = how_sum(val, numbers)
-		if res is not None:
-			return [number, *res] # spread operator
+    res = how_sum(val, numbers)
+    if res is not None:
+      return [number, *res] # spread operator
 
-	return None
+  return None
 
 
 # m: target sum
@@ -42,22 +42,22 @@ def how_sum(targetSum, numbers):
 #   There are m keys, which each have an array value of length m in the worst
 #   case. 
 def how_sum_memo(targetSum, numbers, memo = {}):
-	if targetSum == 0: return []
-	if targetSum < 0: return None
+  if targetSum == 0: return []
+  if targetSum < 0: return None
 
-	if targetSum in memo:
-		return memo[targetSum]
+  if targetSum in memo:
+    return memo[targetSum]
 
-	for number in numbers:
-		val = targetSum - number
+  for number in numbers:
+    val = targetSum - number
 
-		res = how_sum_memo(val, numbers, memo)
-		if res is not None:
-			memo[targetSum] = [number, *res]
-			return memo[targetSum]
+    res = how_sum_memo(val, numbers, memo)
+    if res is not None:
+      memo[targetSum] = [number, *res]
+      return memo[targetSum]
 
-	memo[targetSum] = None
-	return None
+  memo[targetSum] = None
+  return None
 
 
 

@@ -14,17 +14,17 @@
 # Time: O(mn^m)
 # Space: O(m^2)
 def count_construct(target, word_bank):
-	if target == "": return 1
+  if target == "": return 1
 
-	count = 0
-	for word in word_bank:
-		if target.startswith(word):
-			suffix = target[len(word):]
+  count = 0
+  for word in word_bank:
+    if target.startswith(word):
+      suffix = target[len(word):]
 
-			if count_construct(suffix, word_bank) > 0:
-				count += 1
-	
-	return count
+      if count_construct(suffix, word_bank) > 0:
+        count += 1
+  
+  return count
 
 
 
@@ -34,22 +34,22 @@ def count_construct(target, word_bank):
 # Time: O(nm^2)
 # Space: O(m^2)
 def count_construct_memo(target, word_bank, memo = {}):
-	if target == "": return 1
+  if target == "": return 1
 
-	if target in memo:
-		return memo[target]
+  if target in memo:
+    return memo[target]
 
-	count = 0
-	for word in word_bank:
-		if target.startswith(word):
-			suffix = target[len(word):]
+  count = 0
+  for word in word_bank:
+    if target.startswith(word):
+      suffix = target[len(word):]
 
-			if count_construct(suffix, word_bank) > 0:
-				count += 1
+      if count_construct(suffix, word_bank) > 0:
+        count += 1
 
-	memo[target] = count
-	
-	return count
+  memo[target] = count
+  
+  return count
 
 
 print(count_construct("abcdef", ['ab', 'abc', 'cd', 'def', 'abcd', 'abcdef']))

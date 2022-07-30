@@ -14,27 +14,27 @@
 # Time:
 # Size:
 def can_construct(target, word_bank):
-	# each index `i` of the list represents whether the string `target[i:]` can be
-	# generated using any word in `word_bank`. We start off by assuming that no
-	# string is reachable
-	lst = [False] * (len(target) + 1)
+  # each index `i` of the list represents whether the string `target[i:]` can be
+  # generated using any word in `word_bank`. We start off by assuming that no
+  # string is reachable
+  lst = [False] * (len(target) + 1)
 
-	# it's always possible to generate "", just do nothing
-	lst[0] = True
+  # it's always possible to generate "", just do nothing
+  lst[0] = True
 
-	# iterate through the list
-	for i in range(len(lst)):
+  # iterate through the list
+  for i in range(len(lst)):
 
-		# if the current sum is unacheivable, don't build upon it
-		if not lst[i]:
-			continue
+    # if the current sum is unacheivable, don't build upon it
+    if not lst[i]:
+      continue
 
-		for word in word_bank:
+    for word in word_bank:
 
-			if target[i:].startswith(word):
-				lst[i + len(word)] = True
+      if target[i:].startswith(word):
+        lst[i + len(word)] = True
 
-	return lst[len(target)]
+  return lst[len(target)]
 
 
 

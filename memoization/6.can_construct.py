@@ -14,15 +14,15 @@
 # Time: O(n^m * m)
 # Size: O(m^2)
 def can_construct(target, word_bank):
-	if target == "": return True
+  if target == "": return True
 
-	for word in word_bank:
-		if target.startswith(word):
-			val = target[len(word):]
+  for word in word_bank:
+    if target.startswith(word):
+      val = target[len(word):]
 
-			if can_construct(val, word_bank): return True
-	
-	return False
+      if can_construct(val, word_bank): return True
+  
+  return False
 
 
 # m: target length
@@ -31,20 +31,20 @@ def can_construct(target, word_bank):
 # Time: O(n * m^2)
 # Size: O(m^2)
 def can_construct_memo(target, word_bank, memo = {}):
-	if target == "": return True
+  if target == "": return True
 
-	if target in memo:
-		return memo[target]
+  if target in memo:
+    return memo[target]
 
-	for word in word_bank:
-		if target.startswith(word):
-			suffix = target[len(word):]
+  for word in word_bank:
+    if target.startswith(word):
+      suffix = target[len(word):]
 
-			memo[target] = can_construct_memo(suffix, word_bank, memo)
+      memo[target] = can_construct_memo(suffix, word_bank, memo)
 
-			if memo[target]: return True
-	
-	return False
+      if memo[target]: return True
+  
+  return False
 
 print(can_construct("abcdef", ['ab', 'abc', 'cd', 'def', 'abcd']))
 print(can_construct("skateboard", ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar']))

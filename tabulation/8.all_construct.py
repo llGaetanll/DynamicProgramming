@@ -11,27 +11,27 @@
 
 
 def all_construct(target, word_bank):
-	lst = [None] * (len(target) + 1)
+  lst = [None] * (len(target) + 1)
 
-	# only one way to construct the empty string: it's just doing nothing
-	lst[0] = [[]]
+  # only one way to construct the empty string: it's just doing nothing
+  lst[0] = [[]]
 
-	for i, el in enumerate(lst):
+  for i, el in enumerate(lst):
 
-		# if we can't construct the current string, skip
-		if el is None:
-			continue
+    # if we can't construct the current string, skip
+    if el is None:
+      continue
 
-		for word in word_bank:
-			sub_target = target[i:]
+    for word in word_bank:
+      sub_target = target[i:]
 
-			if not sub_target.startswith(word):
-				continue
+      if not sub_target.startswith(word):
+        continue
 
-			lst[i + len(word)] = [word, *el]
-	
-	return lst
-			
+      lst[i + len(word)] = [word, *el]
+  
+  return lst
+      
 
 
 print(all_construct("purple", ['purp', 'p', 'ur', 'le', 'purpl']))

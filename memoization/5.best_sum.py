@@ -15,40 +15,40 @@
 # Time: O(n^m * m)
 # Space: O(m^2)
 def best_sum(targetSum, numbers):
-	if targetSum == 0: return []
-	if targetSum < 0: return None
+  if targetSum == 0: return []
+  if targetSum < 0: return None
 
-	best = None # best is the shortest sum of all children
-	for number in numbers:
-		val = targetSum - number
+  best = None # best is the shortest sum of all children
+  for number in numbers:
+    val = targetSum - number
 
-		res = best_sum(val, numbers)
-		if res is not None and (best is None or len(best) > len(res)):
-			best = [number, *res]
+    res = best_sum(val, numbers)
+    if res is not None and (best is None or len(best) > len(res)):
+      best = [number, *res]
 
-	return best
+  return best
 
 
 # Time: O(n * m^2)
 # Space: O(m^2)
 def best_sum_memo(targetSum, numbers, memo = {}):
-	if targetSum == 0: return []
-	if targetSum < 0: return None
+  if targetSum == 0: return []
+  if targetSum < 0: return None
 
-	if targetSum in memo:
-		return memo[targetSum]
+  if targetSum in memo:
+    return memo[targetSum]
 
-	best = None # best is the shortest sum of all children
-	for number in numbers:
-		val = targetSum - number
+  best = None # best is the shortest sum of all children
+  for number in numbers:
+    val = targetSum - number
 
-		res = best_sum_memo(val, numbers, memo)
-		if res is not None and (best is None or len(best) > len(res)):
-			best = [number, *res]
+    res = best_sum_memo(val, numbers, memo)
+    if res is not None and (best is None or len(best) > len(res)):
+      best = [number, *res]
 
-	memo[targetSum] = best
+  memo[targetSum] = best
 
-	return best
+  return best
 
 
 

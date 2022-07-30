@@ -16,15 +16,15 @@
 # Time: O(n^m)
 # Space: O(m)
 def can_sum(targetSum, numbers):
-	if targetSum == 0: return True
-	if targetSum < 0: return False 
+  if targetSum == 0: return True
+  if targetSum < 0: return False 
 
-	for number in numbers:
-		val = targetSum - number
+  for number in numbers:
+    val = targetSum - number
 
-		if can_sum(val, numbers): return True
+    if can_sum(val, numbers): return True
 
-	return False
+  return False
 
 
 # m: target sum
@@ -37,20 +37,20 @@ def can_sum(targetSum, numbers):
 # Space: O(m)
 # 	Since memo keys can range from [0, m], nothing more.
 def can_sum_memo(targetSum, numbers, memo = {}):
-	if targetSum == 0: return True
-	if targetSum < 0: return False 
+  if targetSum == 0: return True
+  if targetSum < 0: return False 
 
-	for number in numbers:
-		val = targetSum - number
+  for number in numbers:
+    val = targetSum - number
 
-		if val in memo:
-			return memo[val]
-		
-		memo[val] = can_sum_memo(val, numbers, memo)
+    if val in memo:
+      return memo[val]
+    
+    memo[val] = can_sum_memo(val, numbers, memo)
 
-		if memo[val]: return True
+    if memo[val]: return True
 
-	return False
+  return False
 
 
 print(can_sum_memo(7, [3, 4, 5]))
